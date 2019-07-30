@@ -1,5 +1,7 @@
 package com.example.dynamicproxy.reporter
 
+import com.example.dynamicproxy.reporter.param.ParamParser
+import com.example.dynamicproxy.reporter.param.Parameter
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
@@ -7,12 +9,12 @@ import kotlin.reflect.KClass
 
 object IGCReporter {
 
-    var DEFAULT_REPORTER_KCLASS: KClass<IReporter>? = null
+    var DEFAULT_REPORTER_KCLASS: KClass<out IReporter>? = null
 
     /**
      * 设置默认的执行者
      */
-    fun setDefaultReport(kClass: KClass<IReporter>) {
+    fun setDefaultReport(kClass: KClass<out IReporter>) {
         DEFAULT_REPORTER_KCLASS = kClass
     }
 

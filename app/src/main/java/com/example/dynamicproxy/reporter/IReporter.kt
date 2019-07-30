@@ -1,5 +1,7 @@
 package com.example.dynamicproxy.reporter
 
+import com.example.dynamicproxy.reporter.param.Parameter
+
 /**
  * 上报Event行为的执行者
  */

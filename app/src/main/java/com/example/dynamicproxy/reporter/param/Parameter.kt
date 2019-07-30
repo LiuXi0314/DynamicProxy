@@ -1,5 +1,6 @@
-package com.example.dynamicproxy.reporter
+package com.example.dynamicproxy.reporter.param
 
+import com.example.dynamicproxy.reporter.IReporter
 import kotlin.reflect.KClass
 
 /**
@@ -39,8 +40,8 @@ class Parameter(
 
             if (reporterClass == null) {
                 throw IllegalArgumentException(
-                    "The param of $reporterClass can not be null," +
-                            "It is recommended to use 'IGCReporter.setDefaultReport()' to set the default ${IReporter::class.java}"
+                    "The parameter of 'reporterClass' can not be null," +
+                            "It is recommended to use 'IGCReporter.setDefaultReport()' to set the default value."
                 )
             }
 

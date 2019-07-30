@@ -1,5 +1,6 @@
-package com.example.dynamicproxy.reporter
+package com.example.dynamicproxy.reporter.param
 
+import com.example.dynamicproxy.reporter.IGCReporter
 import com.example.dynamicproxy.reporter.annotations.*
 import org.json.JSONException
 import org.json.JSONObject

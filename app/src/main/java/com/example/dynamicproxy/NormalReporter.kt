@@ -1,7 +1,7 @@
 package com.example.dynamicproxy
 
 import com.example.dynamicproxy.reporter.IReporter
-import com.example.dynamicproxy.reporter.Parameter
+import com.example.dynamicproxy.reporter.param.Parameter
 
 class NormalReporter : IReporter {
 

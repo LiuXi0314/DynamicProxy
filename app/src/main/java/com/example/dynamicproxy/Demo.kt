@@ -1,10 +1,7 @@
 package com.example.dynamicproxy
 
 
-import com.example.dynamicproxy.reporter.annotations.EventAction
-import com.example.dynamicproxy.reporter.annotations.EventName
-import com.example.dynamicproxy.reporter.annotations.EventParam
-import com.example.dynamicproxy.reporter.annotations.EventReporter
+import com.example.dynamicproxy.reporter.annotations.*
 
 @EventName("info")
 @EventReporter(CustomReporter::class)
@@ -17,6 +14,13 @@ interface Home {
         @EventParam("page_name") pageName: String = "首页",
         @EventParam("name") name: String = "首页"
     )
+
+    @EventAction("进入首页的事件-map")
+    fun homePageMap(@EventParamMap map: Map<String, Any?>)
+
+
+    @EventAction("进入首页的事件-json")
+    fun homePageJson(@EventParamExt json: String)
 
 
 }

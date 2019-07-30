@@ -10,7 +10,7 @@ package com.example.dynamicproxy.reporter.annotations
  *  "name": "泉灵的语文课三年级上-测试",
  *  "type": "click",
  *  "imgUrl": "https://coolcdn.igetcool.com/t/20190520/18b382cbe01b5085209671e0a3e3999e.jpg",
- *  "subhead": "泉灵的语文课三年级上-测试",
+ *  "subhead": "泉灵的语文课三年级上-测试"
  * }
  *
  */
