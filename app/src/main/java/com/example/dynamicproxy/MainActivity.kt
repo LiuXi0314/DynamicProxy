@@ -64,16 +64,16 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        test5.setOnClickListener {
-            home.testErrorJson(1)
-        }
-
-        test6.setOnClickListener {
-            val map = HashMap<Boolean, String>()
-            map[true] = "00"
-            map[false] = "11"
-            home.testErrorMap(map)
-        }
+//        test5.setOnClickListener {
+//            home.testErrorJson(1)
+//        }
+//
+//        test6.setOnClickListener {
+//            val map = HashMap<Boolean, String>()
+//            map[true] = "00"
+//            map[false] = "11"
+//            home.testErrorMap(map)
+//        }
 
     }
 

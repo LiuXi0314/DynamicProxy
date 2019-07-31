@@ -1,5 +1,6 @@
 package com.example.dynamicproxy.reporter
 
+import android.util.LruCache
 import com.example.dynamicproxy.reporter.param.ParamParser
 import com.example.dynamicproxy.reporter.param.Parameter
 import java.lang.reflect.InvocationHandler
@@ -18,7 +19,8 @@ object IGCReporter {
         DEFAULT_REPORTER_KCLASS = kClass
     }
 
-    private val parameterBuilders = HashMap<Method, Parameter>()
+    private val parameterCache = LruCache<Method, Parameter>(30)
+    private val reporterCache = LruCache<KClass<out IReporter>, IReporter>(3)
 
     fun <T : Any> create(event: Class<T>): T {
 
@@ -49,12 +51,12 @@ object IGCReporter {
      * 加载参数
      */
     private fun loadParameter(method: Method, args: Array<out Any>): Parameter {
-        var parameter = parameterBuilders[method]
+        var parameter = parameterCache[method]
         if (parameter != null) {
             return parameter
         }
         parameter = ParamParser.parse(method, args)
-        parameterBuilders[method] = parameter
+        parameterCache.put(method, parameter)
         return parameter
     }
 
@@ -63,8 +65,13 @@ object IGCReporter {
      */
     fun execute(parameter: Parameter) {
         //创建IReport实例
-        val instance = parameter.reporterClass.objectInstance ?: parameter.reporterClass.java.newInstance()
-        //执行Report()
+
+        var instance = reporterCache[parameter.reporterClass]
+        if (instance == null) {
+            instance = parameter.reporterClass.objectInstance ?: parameter.reporterClass.java.newInstance()
+            reporterCache.put(parameter.reporterClass, instance)
+        }
+        //执行report()
         instance.report(parameter)
     }
 
