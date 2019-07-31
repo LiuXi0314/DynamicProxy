@@ -46,6 +46,34 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        test4.setOnClickListener {
+            val map = HashMap<String, Any?>()
+            map["name"] = "首页"
+            map["pageName"] = "首页"
+            map["test"] = "33322"
+
+            val str = "{\n" +
+                    "   \"productId\": \"327539590412623872\",\n" +
+                    "   \"name\": \"泉灵的语文课三年级上-测试\",\n" +
+                    "   \"type\": \"click\",\n" +
+                    "   \"imgUrl\": \"https://coolcdn.igetcool.com/t/20190520/18b382cbe01b5085209671e0a3e3999e.jpg\",\n" +
+                    "   \"subhead\": \"泉灵的语文课三年级上-测试\"" +
+                    "  }"
+
+            home.homePageMulti("混合", str, map)
+        }
+
+
+        test5.setOnClickListener {
+            home.testErrorJson(1)
+        }
+
+        test6.setOnClickListener {
+            val map = HashMap<Boolean, String>()
+            map[true] = "00"
+            map[false] = "11"
+            home.testErrorMap(map)
+        }
 
     }
 

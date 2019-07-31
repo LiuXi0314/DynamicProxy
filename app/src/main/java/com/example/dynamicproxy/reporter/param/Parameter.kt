@@ -40,7 +40,7 @@ class Parameter(
 
             if (reporterClass == null) {
                 throw IllegalArgumentException(
-                    "The parameter of 'reporterClass' can not be null," +
+                    "The parameter of 'reporterClass' cannot be null," +
                             "It is recommended to use 'IGCReporter.setDefaultReport()' to set the default value."
                 )
             }

@@ -11,22 +11,46 @@
         android:id="@+id/test1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="测试" />
+        android:layout_marginBottom="10dp"
+        android:text="测试普通数据" />
 
     <Button
         android:id="@+id/test2"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="10dp"
         android:text="测试Map" />
 
     <Button
         android:id="@+id/test3"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="10dp"
         android:text="测试Json" />
+
+
+    <Button
+            android:id="@+id/test4"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="测试混合数据" />
+
+
+    <Button
+            android:id="@+id/test5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="测试错误Json送数据" />
+
+
+    <Button
+            android:id="@+id/test6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="测试错误MAP数据" />
 
 
 </LinearLayout>

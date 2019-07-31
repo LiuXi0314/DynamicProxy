@@ -114,9 +114,9 @@ object ParamParser {
             }
             is EventParamMap -> {
                 //arg 必须是Map<out String, Any?>
-                (arg as? Map<out String, Any?>)?.let {
-                    build.eventMap.putAll(it)
-                }
+                var map: Map<out String, Any?>? = arg as? Map<out String, Any?>
+                    ?: throw java.lang.IllegalArgumentException("${arg::class.java} cannot be cast to ${Map::class.java}")
+                build.eventMap.putAll(map!!)
             }
 
         }
@@ -128,7 +128,7 @@ object ParamParser {
      */
     private fun parseJsonToMap(json: Any, build: Parameter.Builder) {
         if (json !is String) {
-            throw IllegalArgumentException("The parameter json must be ${String::class.java},can not be ${json::class.java}")
+            throw IllegalArgumentException("The parameter json must be ${String::class.java},cannot be ${json::class.java}")
         }
         try {
             val jsonObject = JSONObject(json)
