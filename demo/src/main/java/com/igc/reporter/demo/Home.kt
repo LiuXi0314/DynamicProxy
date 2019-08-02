@@ -2,7 +2,7 @@ package com.igc.reporter.demo
 
 import com.igc.reporter.annotations.*
 
-@EventName("info")
+@EventName("home")
 @EventReporter(CustomReporter::class)
 interface Home {
 

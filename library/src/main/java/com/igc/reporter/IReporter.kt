@@ -10,7 +10,7 @@ interface IReporter {
 
     /**
      * 上报Event
-//     * @param parameter 事件的参数集合
+     * @param parameter 事件的参数集合
      */
     fun report(parameter: Parameter)
 

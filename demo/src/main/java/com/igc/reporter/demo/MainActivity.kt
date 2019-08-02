@@ -4,17 +4,18 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
 
-
 import com.igc.reporter.IGCReporter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     init {
-        IGCReporter.setDefaultReport(NormalReporter::class)
+        IGCReporter.setDefaultReporter(NormalReporter::class)
+        IGCReporter.setParameterCacheLimit(100)
+        IGCReporter.setReporterCacheLimit(5)
     }
 
-    private val home by lazy { IGCReporter.create(Home::class.java) }
+    private val home = IGCReporter.create(Home::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +25,6 @@ class MainActivity : AppCompatActivity() {
         test1.setOnClickListener {
             home.homePage("暂无")
         }
-
-
-        val reporter = CustomReporter()
 
         test2.setOnClickListener {
             val map = HashMap<String, Any?>()
@@ -65,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                     "  }"
 
             home.homePageMulti("混合", str, map)
+
         }
 
 //        test5.setOnClickListener {

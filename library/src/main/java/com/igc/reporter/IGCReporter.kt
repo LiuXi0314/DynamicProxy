@@ -11,16 +11,43 @@ import kotlin.reflect.KClass
 object IGCReporter {
 
     var DEFAULT_REPORTER_KCLASS: KClass<out IReporter>? = null
+    private var DEFAULT_PARAMETER_CACHE_LIMIT: Int = 30
+    private var DEFAULT_REPORTER_CACHE_LIMIT: Int = 3
+
+    /**
+     * 设置Reporter缓存数量
+     */
+    fun setReporterCacheLimit(limit: Int) {
+        DEFAULT_REPORTER_CACHE_LIMIT = limit
+    }
+
+    /**
+     * 设置Parameter缓存数量
+     */
+    fun setParameterCacheLimit(limit: Int) {
+        DEFAULT_PARAMETER_CACHE_LIMIT = limit
+    }
 
     /**
      * 设置默认的执行者
      */
-    fun setDefaultReport(kClass: KClass<out IReporter>) {
+    fun setDefaultReporter(kClass: KClass<out IReporter>) {
         DEFAULT_REPORTER_KCLASS = kClass
     }
 
-    private val parameterCache = LruCache<Method, Parameter>(30)
-    private val reporterCache = LruCache<KClass<out IReporter>, IReporter>(3)
+    val parameterCache
+            by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+                LruCache<Method, Parameter>(
+                    DEFAULT_PARAMETER_CACHE_LIMIT
+                )
+            }
+
+    val reporterCache
+            by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+                LruCache<KClass<out IReporter>, IReporter>(
+                    DEFAULT_REPORTER_CACHE_LIMIT
+                )
+            }
 
     fun <T : Any> create(event: Class<T>): T {
 
