@@ -22,7 +22,7 @@ Add it in your root build.gradle at the end of repositories:
 
 ```css
 dependencies {
-	        implementation 'com.github.LiuXi0314:DynamicProxy:Tag'
+	        implementation 'com.github.LiuXi0314:DynamicProxy:$version'
 	}
 ```
 
