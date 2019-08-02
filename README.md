@@ -9,19 +9,19 @@ To get  the project into your build:
 
 Add it in your root build.gradle at the end of repositories:
 
-```css
+```gradle
 	allprojects {
 		repositories {
 			...
-			maven { url 'https://jitpack.io' }
+			maven {url 'https://jitpack.io'}
 		}
 	}
 ```
 
 **Step 2.** Add the dependency
 
-```css
-dependencies {
+```gradle
+	dependencies {
 	        implementation 'com.github.LiuXi0314:DynamicProxy:$version'
 	}
 ```
